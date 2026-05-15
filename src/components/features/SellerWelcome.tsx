@@ -10,8 +10,8 @@ interface SellerWelcomeProps {
 
 export default function SellerWelcome({ onStart, referrerName = 'Budi' }: SellerWelcomeProps) {
   return (
-    <div className="pb-32 overflow-hidden">
-      <div className="relative pt-12 pb-20 px-6 bg-gradient-to-br from-orange-400 to-orange-600 text-white">
+    <div className="pb-32 overflow-x-hidden">
+      <div className="relative pt-12 pb-20 px-6 bg-gradient-to-br from-orange-400 to-orange-600 text-white overflow-hidden">
         {/* Abstract shapes for visual interest */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-20 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full -ml-24 -mb-24 blur-2xl" />
@@ -22,7 +22,7 @@ export default function SellerWelcome({ onStart, referrerName = 'Budi' }: Seller
            className="relative z-10"
         >
           <div className="flex items-center justify-between mb-6">
-            <Logo size={48} showText={false} />
+            <Logo size={40} showText={false} variant="icon-only-orange" className="bg-white p-2.5 rounded-2xl shadow-md" />
             <div className="flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/30">
               <Users size={16} />
               <span className="text-xs font-bold">{referrerName} mengundangmu</span>
@@ -38,7 +38,7 @@ export default function SellerWelcome({ onStart, referrerName = 'Budi' }: Seller
         </motion.div>
       </div>
 
-      <div className="px-6 -mt-10 relative z-20">
+      <div className="px-4 -mt-10 relative z-20">
          <div className="bg-white rounded-[32px] p-8 shadow-2xl shadow-orange-900/10 border border-orange-50">
             <h3 className="font-bold text-gray-900 mb-6">Kenapa Jualan di Sini?</h3>
             
