@@ -218,15 +218,17 @@ export default function OnboardingForm({ onComplete }: OnboardingFormProps) {
       </div>
 
       {/* Floating help button */}
-      <div className="fixed bottom-28 right-5 z-50">
-        <button
-          onClick={() => window.open('https://wa.me/?text=Halo%20Admin%20PasarBersama,%20saya%20butuh%20bantuan%20daftar%20toko.', '_blank')}
-          className="flex items-center gap-2 bg-white text-green-600 font-black px-4 py-3 rounded-full shadow-2xl shadow-gray-300/40 border border-green-100 active:scale-95 transition-all text-[11px]"
-          id="help-wa-floating-btn"
-        >
-          <MessageCircle size={15} fill="currentColor" />
-          Butuh Bantuan?
-        </button>
+      <div className="fixed bottom-28 left-0 right-0 max-w-md mx-auto z-50 pointer-events-none px-4">
+        <div className="flex justify-end pointer-events-auto">
+          <button
+            onClick={() => window.open('https://wa.me/?text=Halo%20Admin%20PasarBersama,%20saya%20butuh%20bantuan%20daftar%20toko.', '_blank')}
+            className="flex items-center gap-2 bg-white text-green-600 font-black px-4 py-3 rounded-full shadow-2xl shadow-gray-300/40 border border-green-100 active:scale-95 transition-all text-[11px]"
+            id="help-wa-floating-btn"
+          >
+            <MessageCircle size={15} fill="currentColor" />
+            Butuh Bantuan?
+          </button>
+        </div>
       </div>
 
       {/* CTA footer */}

@@ -22,7 +22,7 @@ export default function SellerWelcome({ onStart, referrerName = 'Budi' }: Seller
            className="relative z-10"
         >
           <div className="flex items-center justify-between mb-6">
-            <Logo size={40} showText={false} className="bg-white p-2 rounded-2xl shadow-lg" />
+            <Logo size={48} showText={false} />
             <div className="flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/30">
               <Users size={16} />
               <span className="text-xs font-bold">{referrerName} mengundangmu</span>
@@ -76,7 +76,7 @@ export default function SellerWelcome({ onStart, referrerName = 'Budi' }: Seller
          </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 p-6 bg-white/80 backdrop-blur-md border-t border-gray-100">
+      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md p-6 bg-white/80 backdrop-blur-md border-t border-gray-100">
         <button 
           onClick={onStart}
           className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl font-bold text-white shadow-xl shadow-orange-200 active:scale-95 transition-all"

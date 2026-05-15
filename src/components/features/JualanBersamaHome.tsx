@@ -6,12 +6,11 @@ import Logo from '@/src/components/ui/Logo';
 
 interface JualanBersamaHomeProps {
   onNavigate: (view: ViewState) => void;
-  onShare: () => void;
 }
 
-export default function JualanBersamaHome({ onNavigate, onShare }: JualanBersamaHomeProps) {
+export default function JualanBersamaHome({ onNavigate }: JualanBersamaHomeProps) {
   const quickActions = [
-    { icon: Share2, label: 'Ajak Teman', color: '#FF6B00', bg: '#FFF3EC', action: onShare },
+    { icon: Share2, label: 'Ajak Teman', color: '#FF6B00', bg: '#FFF3EC', action: () => onNavigate(ViewState.WELCOME) },
     { icon: TrendingUp, label: 'Status', color: '#3B82F6', bg: '#EFF6FF', action: () => onNavigate(ViewState.STATUS) },
     { icon: Users, label: 'Komunitas', color: '#10B981', bg: '#ECFDF5', action: () => onNavigate(ViewState.COMMUNITY) },
     { icon: Headphones, label: 'Bantuan', color: '#8B5CF6', bg: '#F5F3FF', action: () => {} },
@@ -189,7 +188,7 @@ export default function JualanBersamaHome({ onNavigate, onShare }: JualanBersama
       {/* Main CTA */}
       <div className="px-4 pb-8">
         <button
-          onClick={onShare}
+          onClick={() => onNavigate(ViewState.WELCOME)}
           className="w-full flex items-center justify-center gap-3 py-5 rounded-[20px] font-[900] text-white text-base tracking-tight active:scale-95 transition-all"
           style={{
             background: `linear-gradient(135deg, ${BRAND_COLOR.whatsapp} 0%, #17A05D 100%)`,

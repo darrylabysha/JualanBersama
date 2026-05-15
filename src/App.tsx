@@ -11,8 +11,9 @@ import ReferralStatus from '@/src/components/features/ReferralStatus';
 import CommunityPage from '@/src/components/features/CommunityPage';
 import SellerWelcome from '@/src/components/features/SellerWelcome';
 import OnboardingForm from '@/src/components/features/OnboardingForm';
+import SplashScreen from '@/src/components/features/SplashScreen';
 import { ViewState } from '@/src/types';
-import { CheckCircle2, Share2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 // ─── Toast ───────────────────────────────────────────────────────────────────
 
@@ -50,6 +51,7 @@ function Toast({ toast, onDone }: { toast: ToastMsg; onDone: (id: number) => voi
 // ─── App ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
+  const [splash, setSplash] = useState(true);
   const [currentView, setCurrentView] = useState<ViewState>(ViewState.HOME);
   const [toasts, setToasts] = useState<ToastMsg[]>([]);
 
@@ -87,19 +89,11 @@ export default function App() {
     }
   };
 
-  const handleShare = () => {
-    const text = encodeURIComponent(
-      'Ajak Teman Jualan Online, Tumbuh Bersama! Daftar lewat link ini buat dapet bonus modal jualan: ' +
-      window.location.origin + '?ref=VIP'
-    );
-    window.open(`https://wa.me/?text=${text}`, '_blank');
-    showToast('Link undangan berhasil dibuka di WhatsApp!', 'success');
-  };
-
   const showBottomNav = [ViewState.HOME, ViewState.STATUS, ViewState.COMMUNITY].includes(currentView);
 
   return (
     <div className="h-[100dvh] bg-[#F5F5F7] font-sans max-w-md mx-auto shadow-2xl relative flex flex-col overflow-hidden">
+      {splash && <SplashScreen onDone={() => setSplash(false)} />}
       {currentView !== ViewState.HOME && (
         <Navbar
           title={getNavbarTitle()}
@@ -111,7 +105,7 @@ export default function App() {
 
       <main className="flex-1 overflow-y-auto custom-scrollbar relative">
         {currentView === ViewState.HOME && (
-          <JualanBersamaHome onNavigate={setCurrentView} onShare={handleShare} />
+          <JualanBersamaHome onNavigate={setCurrentView} />
         )}
         {currentView === ViewState.STATUS && (
           <ReferralStatus />
