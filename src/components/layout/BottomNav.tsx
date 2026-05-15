@@ -1,6 +1,5 @@
 import { Home, ClipboardList, Users } from 'lucide-react';
 import { ViewState } from '@/src/types';
-import { BRAND_COLOR } from '@/src/constants';
 
 interface BottomNavProps {
   currentView: ViewState;
@@ -9,35 +8,40 @@ interface BottomNavProps {
 
 export default function BottomNav({ currentView, onNavigate }: BottomNavProps) {
   const tabs = [
-    { id: ViewState.HOME, label: 'Beranda', icon: Home },
-    { id: ViewState.STATUS, label: 'Status', icon: ClipboardList },
+    { id: ViewState.HOME,      label: 'Beranda',   icon: Home },
+    { id: ViewState.STATUS,    label: 'Status',    icon: ClipboardList },
     { id: ViewState.COMMUNITY, label: 'Komunitas', icon: Users },
   ];
 
   return (
-    <div className="bg-[#FAFAFA] flex items-center justify-around py-3 pb-8 px-6 z-50 flex-shrink-0">
-      {tabs.map((tab) => {
+    <div className="bg-white border-t border-gray-100 flex items-stretch justify-around z-50 flex-shrink-0 shadow-[0_-4px_24px_rgba(0,0,0,0.06)]">
+      {tabs.map(tab => {
         const Icon = tab.icon;
         const isActive = currentView === tab.id;
-        
+
         return (
           <button
             key={tab.id}
             onClick={() => onNavigate(tab.id)}
-            className={`flex flex-col items-center gap-1.5 transition-all duration-300 ${
-              isActive ? 'scale-105' : 'opacity-40 grayscale'
-            }`}
+            className="flex flex-col items-center gap-1 flex-1 pt-3 pb-7 active:scale-90 transition-transform duration-150 relative"
           >
-            <div 
-              className={`p-2.5 rounded-2xl transition-colors ${isActive ? 'bg-orange-500 shadow-lg shadow-orange-500/20' : 'bg-white shadow-sm'}`}
-            >
-              <Icon 
-                size={20} 
-                color={isActive ? '#FFFFFF' : '#9CA3AF'} 
-                strokeWidth={isActive ? 3 : 2}
+            {/* Active top indicator */}
+            <span
+              className={`absolute top-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
+                isActive ? 'w-8 bg-orange-500' : 'w-0 bg-transparent'
+              }`}
+            />
+
+            <div className={`p-2 rounded-[14px] transition-all duration-200 ${isActive ? 'bg-orange-50' : ''}`}>
+              <Icon
+                size={22}
+                color={isActive ? '#FF6B00' : '#CBD5E1'}
+                strokeWidth={isActive ? 2.5 : 2}
               />
             </div>
-            <span className={`text-[10px] font-black tracking-tight ${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
+            <span className={`text-[10px] font-bold transition-all duration-200 ${
+              isActive ? 'text-orange-500' : 'text-gray-400'
+            }`}>
               {tab.label}
             </span>
           </button>

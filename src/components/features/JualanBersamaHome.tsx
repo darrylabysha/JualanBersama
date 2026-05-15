@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Share2, Store, Package, Coins, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Share2, Store, Coins, Bell, ChevronRight, Gift, Users, Headphones, TrendingUp, Zap, Sparkles } from 'lucide-react';
 import { BRAND_COLOR, CONTENT } from '@/src/constants';
 import { ViewState } from '@/src/types';
 import Logo from '@/src/components/ui/Logo';
@@ -10,113 +10,195 @@ interface JualanBersamaHomeProps {
 }
 
 export default function JualanBersamaHome({ onNavigate, onShare }: JualanBersamaHomeProps) {
+  const quickActions = [
+    { icon: Share2, label: 'Ajak Teman', color: '#FF6B00', bg: '#FFF3EC', action: onShare },
+    { icon: TrendingUp, label: 'Status', color: '#3B82F6', bg: '#EFF6FF', action: () => onNavigate(ViewState.STATUS) },
+    { icon: Users, label: 'Komunitas', color: '#10B981', bg: '#ECFDF5', action: () => onNavigate(ViewState.COMMUNITY) },
+    { icon: Headphones, label: 'Bantuan', color: '#8B5CF6', bg: '#F5F3FF', action: () => {} },
+  ];
+
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 bg-[#FAFAFA]">
-      {/* Native App Style Header - Minimalist */}
-      <div className="px-6 pt-6 pb-2">
-        <Logo size={32} showText={true} />
+    <div className="animate-in fade-in duration-300 bg-[#F5F5F7]">
+      {/* Header — DANA style */}
+      <div className="bg-white px-5 pt-6 pb-4 flex items-center justify-between shadow-[0_1px_0_rgba(0,0,0,0.06)]">
+        <Logo size={28} showText={true} />
+        <div className="flex items-center gap-2.5">
+          <button className="relative w-10 h-10 rounded-2xl bg-gray-50 flex items-center justify-center active:scale-90 transition-all">
+            <Bell size={19} className="text-gray-600" strokeWidth={2} />
+            <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
+          </button>
+          <div className="w-10 h-10 rounded-2xl bg-orange-500 flex items-center justify-center text-white font-black text-sm shadow-md shadow-orange-200">
+            B
+          </div>
+        </div>
       </div>
 
-      {/* Modern Hero - Integrated */}
-      <section className="px-6 py-4">
-        <div className="relative bg-white rounded-[32px] p-8 overflow-hidden shadow-xl shadow-orange-900/5 border border-white">
-           <div className="relative z-10 space-y-5">
-              <h2 className="text-[32px] font-[900] text-gray-900 leading-[1.1] tracking-tight">
-                {CONTENT.home.heroTitle}
-              </h2>
-              <p className="text-gray-500 text-sm font-medium leading-relaxed max-w-[240px]">
-                {CONTENT.home.heroSub}
-              </p>
-              
-              <div className="flex items-center gap-3 pt-2">
-                 <div className="flex -space-x-3">
-                    {[1,2,3].map(i => (
-                      <div key={i} className="w-9 h-9 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center overflow-hidden">
-                         <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i * 88}`} alt="User" />
-                      </div>
-                    ))}
-                    <div className="w-9 h-9 rounded-full border-2 border-white bg-orange-500 flex items-center justify-center text-[10px] font-black text-white shadow-lg shadow-orange-500/20">
-                       +10k
-                    </div>
-                 </div>
-                 <div className="flex flex-col">
-                   <span className="text-[11px] font-black text-gray-900">Gabung Komunitas</span>
-                   <span className="text-[10px] font-bold text-gray-400">Baru bergabung jualan online!</span>
-                 </div>
-              </div>
-           </div>
-           
-           {/* Abstract mesh background effect */}
-           <div className="absolute top-0 right-0 w-48 h-48 bg-orange-100/30 rounded-full blur-[64px] -mt-12 -mr-12" />
-        </div>
-      </section>
-
-      {/* Progress Card - More compact and modern */}
-      <section className="px-6 pb-6">
-        <div 
-          onClick={() => onNavigate(ViewState.STATUS)}
-          className="bg-gray-900 rounded-[32px] p-7 text-white flex justify-between items-center group active:scale-[0.98] transition-all cursor-pointer shadow-2xl shadow-gray-900/20"
+      {/* Wallet / Bonus Card — DANA style dark gradient */}
+      <div className="px-4 pt-4 pb-2">
+        <div
+          className="rounded-[28px] p-6 relative overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #1A1A2E 0%, #16213E 60%, #0F3460 100%)' }}
         >
-          <div className="space-y-5 flex-1">
-             <div className="flex justify-between items-end">
-                <div>
-                  <div className="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1">Potensi Bonus</div>
-                  <div className="text-3xl font-[900] text-orange-400 tracking-tighter">Rp 100k</div>
+          <div
+            className="absolute top-0 right-0 w-56 h-56 rounded-full opacity-20 -mt-20 -mr-20 pointer-events-none"
+            style={{ background: 'radial-gradient(circle, #FF6B00 0%, transparent 70%)' }}
+          />
+          <div
+            className="absolute bottom-0 left-0 w-32 h-32 rounded-full opacity-10 -mb-14 -ml-14 pointer-events-none"
+            style={{ background: 'radial-gradient(circle, #FF6B00 0%, transparent 70%)' }}
+          />
+
+          <div className="relative z-10">
+            <div className="flex items-start justify-between mb-5">
+              <div>
+                <div className="flex items-center gap-1.5 mb-1.5">
+                  <Zap size={11} className="text-orange-400" fill="currentColor" />
+                  <span className="text-[10px] text-orange-300 font-black uppercase tracking-widest">Potensi Bonus Kamu</span>
                 </div>
-                <div className="text-right">
-                  <div className="text-2xl font-[900] tracking-tighter">2/5</div>
-                  <div className="text-[10px] text-gray-400 uppercase font-black tracking-widest">Teman Toko</div>
-                </div>
-             </div>
-             {/* Progress Bar */}
-             <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-                <motion.div 
-                   initial={{ width: 0 }}
-                   animate={{ width: '40%' }}
-                   className="h-full bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.5)]"
+                <div className="text-[40px] font-[900] text-white tracking-tighter leading-none">Rp 100k</div>
+                <div className="text-[11px] text-gray-400 mt-1.5">dari 5 undangan yang berhasil</div>
+              </div>
+              <div className="bg-orange-500 p-3.5 rounded-[18px] shadow-lg shadow-orange-500/30">
+                <Gift size={22} color="white" strokeWidth={2.5} />
+              </div>
+            </div>
+
+            {/* Progress */}
+            <div className="space-y-2 mb-4">
+              <div className="flex justify-between items-center">
+                <span className="text-[11px] text-gray-400 font-bold">Progress Undangan</span>
+                <span className="text-[11px] text-orange-400 font-black">2 / 5 toko aktif</span>
+              </div>
+              <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: '40%' }}
+                  transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
+                  className="h-full bg-orange-500 rounded-full"
+                  style={{ boxShadow: '0 0 12px rgba(249,115,22,0.6)' }}
                 />
-             </div>
-          </div>
-          <div className="w-10 h-10 flex items-center justify-center rounded-2xl bg-white/5 ml-4 group-hover:bg-white/10 transition-colors">
-            <ChevronRight size={20} className="text-gray-400" />
+              </div>
+            </div>
+
+            {/* View Status */}
+            <button
+              onClick={() => onNavigate(ViewState.STATUS)}
+              className="w-full flex items-center justify-between bg-white/10 backdrop-blur-sm border border-white/10 rounded-[16px] px-4 py-3 active:scale-95 transition-all hover:bg-white/15"
+            >
+              <span className="text-sm font-bold text-white">Lihat Detail Status</span>
+              <ChevronRight size={16} className="text-gray-400" />
+            </button>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Quick Steps - Cleaner grid */}
-      <section className="px-7 py-2 grid gap-6">
-         {CONTENT.home.steps.map((step, idx) => (
-           <div key={idx} className="flex gap-5 items-center">
-              <div className={`w-14 h-14 rounded-3xl flex items-center justify-center shadow-sm flex-shrink-0 border border-gray-100 ${
-                idx === 0 ? 'bg-blue-50 text-blue-500' : 
-                idx === 1 ? 'bg-orange-50 text-orange-500' : 
-                'bg-yellow-50 text-yellow-600'
-              }`}>
-                 {idx === 0 && <Share2 size={24} strokeWidth={2.5} />}
-                 {idx === 1 && <Store size={24} strokeWidth={2.5} />}
-                 {idx === 2 && <Coins size={24} strokeWidth={2.5} />}
-              </div>
-              <div className="space-y-0.5">
-                 <h4 className="font-black text-[15px] text-gray-900">{step.title}</h4>
-                 <p className="text-[11px] text-gray-500 leading-normal font-bold">{step.desc}</p>
-              </div>
-           </div>
-         ))}
-      </section>
+      {/* Quick Actions — Gojek services grid */}
+      <div className="px-4 py-3">
+        <div className="bg-white rounded-[24px] p-5 shadow-sm">
+          <div className="grid grid-cols-4 gap-1">
+            {quickActions.map((action, idx) => {
+              const Icon = action.icon;
+              return (
+                <button
+                  key={idx}
+                  onClick={action.action}
+                  className="flex flex-col items-center gap-2.5 active:scale-90 transition-all py-1"
+                >
+                  <div
+                    className="w-14 h-14 rounded-[18px] flex items-center justify-center"
+                    style={{ backgroundColor: action.bg }}
+                  >
+                    <Icon size={22} color={action.color} strokeWidth={2.5} />
+                  </div>
+                  <span className="text-[10px] font-bold text-gray-500 text-center leading-tight">{action.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
-      {/* The Main Action */}
-      <div className="px-6 pt-10 pb-8">
-        <button 
+      {/* Promo Banner — Tokopedia flash sale style */}
+      <div className="px-4 pb-3">
+        <div
+          className="rounded-[20px] px-4 py-3.5 flex items-center gap-3.5 overflow-hidden relative"
+          style={{ background: 'linear-gradient(135deg, #FFF3EC 0%, #FFE8D6 100%)' }}
+        >
+          <div className="w-10 h-10 bg-orange-500 rounded-[14px] flex items-center justify-center flex-shrink-0 shadow-md shadow-orange-300">
+            <Sparkles size={18} color="white" fill="white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="text-[10px] font-black text-orange-600 uppercase tracking-wide">Promo Terbatas!</div>
+            <div className="text-[12px] font-bold text-gray-800 leading-tight">Bonus 2x lipat untuk 100 pengundang pertama</div>
+          </div>
+          <div className="bg-orange-500 text-white text-[9px] font-black px-2.5 py-1.5 rounded-full whitespace-nowrap">
+            Ambil
+          </div>
+        </div>
+      </div>
+
+      {/* How It Works */}
+      <div className="px-4 pb-4">
+        <div className="bg-white rounded-[24px] p-5 shadow-sm">
+          <h3 className="text-[11px] font-black text-gray-400 uppercase tracking-widest mb-5">Cara Kerja</h3>
+          <div className="space-y-5">
+            {CONTENT.home.steps.map((step, idx) => (
+              <div key={idx} className="flex gap-4 items-center">
+                <div className={`w-12 h-12 rounded-[16px] flex items-center justify-center flex-shrink-0 ${
+                  idx === 0 ? 'bg-blue-50' :
+                  idx === 1 ? 'bg-orange-50' :
+                  'bg-green-50'
+                }`}>
+                  {idx === 0 && <Share2 size={20} color="#3B82F6" strokeWidth={2.5} />}
+                  {idx === 1 && <Store size={20} color="#FF6B00" strokeWidth={2.5} />}
+                  {idx === 2 && <Coins size={20} color="#10B981" strokeWidth={2.5} />}
+                </div>
+                <div className="flex-1">
+                  <div className="inline-flex items-center bg-gray-100 rounded-full px-2 py-0.5 mb-1">
+                    <span className="text-[9px] font-black text-gray-400 uppercase tracking-wide">Langkah {idx + 1}</span>
+                  </div>
+                  <h4 className="font-black text-[14px] text-gray-900 leading-tight">{step.title}</h4>
+                  <p className="text-[11px] text-gray-500 leading-relaxed font-medium mt-0.5">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Avatar social proof */}
+      <div className="px-4 pb-4">
+        <div className="bg-white rounded-[24px] px-5 py-4 shadow-sm flex items-center gap-4">
+          <div className="flex -space-x-2.5">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 overflow-hidden flex-shrink-0">
+                <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i * 88}`} alt="User" />
+              </div>
+            ))}
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-orange-500 flex items-center justify-center text-[9px] font-black text-white flex-shrink-0">
+              +10k
+            </div>
+          </div>
+          <div>
+            <div className="text-[12px] font-black text-gray-900">10.000+ seller aktif</div>
+            <div className="text-[10px] font-medium text-gray-400">Baru bergabung & sudah untung!</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main CTA */}
+      <div className="px-4 pb-8">
+        <button
           onClick={onShare}
-          className="w-full flex items-center justify-center gap-3 py-5 rounded-[28px] font-[900] text-white shadow-2xl active:scale-95 transition-all text-lg tracking-tight"
-          style={{ 
+          className="w-full flex items-center justify-center gap-3 py-5 rounded-[20px] font-[900] text-white text-base tracking-tight active:scale-95 transition-all"
+          style={{
             background: `linear-gradient(135deg, ${BRAND_COLOR.whatsapp} 0%, #17A05D 100%)`,
-            boxShadow: '0 24px 48px -12px rgba(37, 211, 102, 0.4)'
+            boxShadow: '0 16px 40px -8px rgba(37, 211, 102, 0.45)'
           }}
           id="main-share-btn"
         >
-          <Share2 size={22} strokeWidth={3} />
-          Mulai Ajak Sekarang
+          <Share2 size={20} strokeWidth={3} />
+          Ajak Teman Jualan Sekarang
         </button>
       </div>
     </div>
